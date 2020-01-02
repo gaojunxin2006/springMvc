@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ecps.sqlMap.EbOrderdetailMapper" >
+  <resultMap id="BaseResultMap" type="ecps.model.EbOrderdetail" >
+    <id column="ORDERDETAILID" property="orderdetailid" jdbcType="DECIMAL" />
+    <result column="ORDERID" property="orderid" jdbcType="DECIMAL" />
+    <result column="ITEMID" property="itemid" jdbcType="DECIMAL" />
+    <result column="ITEMNAME" property="itemname" jdbcType="VARCHAR" />
+    <result column="ITEMNO" property="itemno" jdbcType="VARCHAR" />
+    <result column="SKUID" property="skuid" jdbcType="DECIMAL" />
+    <result column="SKU" property="sku" jdbcType="VARCHAR" />
+    <result column="SKUIMG" property="skuimg" jdbcType="VARCHAR" />
+    <result column="SKUNAME" property="skuname" jdbcType="VARCHAR" />
+    <result column="SKUCATTYPE" property="skucattype" jdbcType="DECIMAL" />
+    <result column="SKUSPEC" property="skuspec" jdbcType="VARCHAR" />
+    <result column="MARKETPRICE" property="marketprice" jdbcType="DECIMAL" />
+    <result column="SKUDISCOUNT" property="skudiscount" jdbcType="DECIMAL" />
+    <result column="SKUPRICE" property="skuprice" jdbcType="DECIMAL" />
+    <result column="OFFERGROUPID" property="offergroupid" jdbcType="DECIMAL" />
+    <result column="OFFERGROUPNAME" property="offergroupname" jdbcType="VARCHAR" />
+    <result column="OFFERTYPE" property="offertype" jdbcType="DECIMAL" />
+    <result column="SHORTNAME" property="shortname" jdbcType="VARCHAR" />
+    <result column="OFFERID" property="offerid" jdbcType="DECIMAL" />
+    <result column="OFFERNAME" property="offername" jdbcType="VARCHAR" />
+    <result column="OFFERNO" property="offerno" jdbcType="VARCHAR" />
+    <result column="SHORTNAME2" property="shortname2" jdbcType="VARCHAR" />
+    <result column="OFFERTERM" property="offerterm" jdbcType="DECIMAL" />
+    <result column="COMMITMONTHLY" property="commitmonthly" jdbcType="DECIMAL" />
+    <result column="PREPAID" property="prepaid" jdbcType="DECIMAL" />
+    <result column="PERIOD" property="period" jdbcType="DECIMAL" />
+    <result column="REFUNDMONTHLY" property="refundmonthly" jdbcType="DECIMAL" />
+    <result column="REFUND1STMONTH" property="refund1stmonth" jdbcType="DECIMAL" />
+    <result column="REFUNDLASTMONTH" property="refundlastmonth" jdbcType="DECIMAL" />
+    <result column="ORDERDETAILTYPE" property="orderdetailtype" jdbcType="DECIMAL" />
+    <result column="MERCHANTID" property="merchantid" jdbcType="DECIMAL" />
+    <result column="QUANTITY" property="quantity" jdbcType="DECIMAL" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    <result column="SERIESCODE" property="seriescode" jdbcType="VARCHAR" />
+    <result column="OFFERGROUPNO" property="offergroupno" jdbcType="VARCHAR" />
+    <result column="PROMOTYPE" property="promotype" jdbcType="DECIMAL" />
+    <result column="CONDID" property="condid" jdbcType="VARCHAR" />
+    <result column="PRODUCTID" property="productid" jdbcType="VARCHAR" />
+    <result column="PAYMENTPRICE" property="paymentprice" jdbcType="DECIMAL" />
+    <result column="PURCHASEPRICE" property="purchaseprice" jdbcType="DECIMAL" />
+    <result column="SIMCARDSUITID" property="simcardsuitid" jdbcType="DECIMAL" />
+    <result column="SIMCARDPACKAGEID" property="simcardpackageid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ORDERDETAILID, ORDERID, ITEMID, ITEMNAME, ITEMNO, SKUID, SKU, SKUIMG, SKUNAME, SKUCATTYPE, 
+    SKUSPEC, MARKETPRICE, SKUDISCOUNT, SKUPRICE, OFFERGROUPID, OFFERGROUPNAME, OFFERTYPE, 
+    SHORTNAME, OFFERID, OFFERNAME, OFFERNO, SHORTNAME2, OFFERTERM, COMMITMONTHLY, PREPAID, 
+    PERIOD, REFUNDMONTHLY, REFUND1STMONTH, REFUNDLASTMONTH, ORDERDETAILTYPE, MERCHANTID, 
+    QUANTITY, PRICE, SERIESCODE, OFFERGROUPNO, PROMOTYPE, CONDID, PRODUCTID, PAYMENTPRICE, 
+    PURCHASEPRICE, SIMCARDSUITID, SIMCARDPACKAGEID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from EB_ORDERDETAIL
+    where ORDERDETAILID = #{orderdetailid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from EB_ORDERDETAIL
+    where ORDERDETAILID = #{orderdetailid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="ecps.model.EbOrderdetail" >
+    insert into EB_ORDERDETAIL (ORDERDETAILID, ORDERID, ITEMID, 
+      ITEMNAME, ITEMNO, SKUID, 
+      SKU, SKUIMG, SKUNAME, 
+      SKUCATTYPE, SKUSPEC, MARKETPRICE, 
+      SKUDISCOUNT, SKUPRICE, OFFERGROUPID, 
+      OFFERGROUPNAME, OFFERTYPE, SHORTNAME, 
+      OFFERID, OFFERNAME, OFFERNO, 
+      SHORTNAME2, OFFERTERM, COMMITMONTHLY, 
+      PREPAID, PERIOD, REFUNDMONTHLY, 
+      REFUND1STMONTH, REFUNDLASTMONTH, ORDERDETAILTYPE, 
+      MERCHANTID, QUANTITY, PRICE, 
+      SERIESCODE, OFFERGROUPNO, PROMOTYPE, 
+      CONDID, PRODUCTID, PAYMENTPRICE, 
+      PURCHASEPRICE, SIMCARDSUITID, SIMCARDPACKAGEID
+      )
+    values (#{orderdetailid,jdbcType=DECIMAL}, #{orderid,jdbcType=DECIMAL}, #{itemid,jdbcType=DECIMAL}, 
+      #{itemname,jdbcType=VARCHAR}, #{itemno,jdbcType=VARCHAR}, #{skuid,jdbcType=DECIMAL}, 
+      #{sku,jdbcType=VARCHAR}, #{skuimg,jdbcType=VARCHAR}, #{skuname,jdbcType=VARCHAR}, 
+      #{skucattype,jdbcType=DECIMAL}, #{skuspec,jdbcType=VARCHAR}, #{marketprice,jdbcType=DECIMAL}, 
+      #{skudiscount,jdbcType=DECIMAL}, #{skuprice,jdbcType=DECIMAL}, #{offergroupid,jdbcType=DECIMAL}, 
+      #{offergroupname,jdbcType=VARCHAR}, #{offertype,jdbcType=DECIMAL}, #{shortname,jdbcType=VARCHAR}, 
+      #{offerid,jdbcType=DECIMAL}, #{offername,jdbcType=VARCHAR}, #{offerno,jdbcType=VARCHAR}, 
+      #{shortname2,jdbcType=VARCHAR}, #{offerterm,jdbcType=DECIMAL}, #{commitmonthly,jdbcType=DECIMAL}, 
+      #{prepaid,jdbcType=DECIMAL}, #{period,jdbcType=DECIMAL}, #{refundmonthly,jdbcType=DECIMAL}, 
+      #{refund1stmonth,jdbcType=DECIMAL}, #{refundlastmonth,jdbcType=DECIMAL}, #{orderdetailtype,jdbcType=DECIMAL}, 
+      #{merchantid,jdbcType=DECIMAL}, #{quantity,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, 
+      #{seriescode,jdbcType=VARCHAR}, #{offergroupno,jdbcType=VARCHAR}, #{promotype,jdbcType=DECIMAL}, 
+      #{condid,jdbcType=VARCHAR}, #{productid,jdbcType=VARCHAR}, #{paymentprice,jdbcType=DECIMAL}, 
+      #{purchaseprice,jdbcType=DECIMAL}, #{simcardsuitid,jdbcType=DECIMAL}, #{simcardpackageid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ecps.model.EbOrderdetail" >
+    insert into EB_ORDERDETAIL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderdetailid != null" >
+        ORDERDETAILID,
+      </if>
+      <if test="orderid != null" >
+        ORDERID,
+      </if>
+      <if test="itemid != null" >
+        ITEMID,
+      </if>
+      <if test="itemname != null" >
+        ITEMNAME,
+      </if>
+      <if test="itemno != null" >
+        ITEMNO,
+      </if>
+      <if test="skuid != null" >
+        SKUID,
+      </if>
+      <if test="sku != null" >
+        SKU,
+      </if>
+      <if test="skuimg != null" >
+        SKUIMG,
+      </if>
+      <if test="skuname != null" >
+        SKUNAME,
+      </if>
+      <if test="skucattype != null" >
+        SKUCATTYPE,
+      </if>
+      <if test="skuspec != null" >
+        SKUSPEC,
+      </if>
+      <if test="marketprice != null" >
+        MARKETPRICE,
+      </if>
+      <if test="skudiscount != null" >
+        SKUDISCOUNT,
+      </if>
+      <if test="skuprice != null" >
+        SKUPRICE,
+      </if>
+      <if test="offergroupid != null" >
+        OFFERGROUPID,
+      </if>
+      <if test="offergroupname != null" >
+        OFFERGROUPNAME,
+      </if>
+      <if test="offertype != null" >
+        OFFERTYPE,
+      </if>
+      <if test="shortname != null" >
+        SHORTNAME,
+      </if>
+      <if test="offerid != null" >
+        OFFERID,
+      </if>
+      <if test="offername != null" >
+        OFFERNAME,
+      </if>
+      <if test="offerno != null" >
+        OFFERNO,
+      </if>
+      <if test="shortname2 != null" >
+        SHORTNAME2,
+      </if>
+      <if test="offerterm != null" >
+        OFFERTERM,
+      </if>
+      <if test="commitmonthly != null" >
+        COMMITMONTHLY,
+      </if>
+      <if test="prepaid != null" >
+        PREPAID,
+      </if>
+      <if test="period != null" >
+        PERIOD,
+      </if>
+      <if test="refundmonthly != null" >
+        REFUNDMONTHLY,
+      </if>
+      <if test="refund1stmonth != null" >
+        REFUND1STMONTH,
+      </if>
+      <if test="refundlastmonth != null" >
+        REFUNDLASTMONTH,
+      </if>
+      <if test="orderdetailtype != null" >
+        ORDERDETAILTYPE,
+      </if>
+      <if test="merchantid != null" >
+        MERCHANTID,
+      </if>
+      <if test="quantity != null" >
+        QUANTITY,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="seriescode != null" >
+        SERIESCODE,
+      </if>
+      <if test="offergroupno != null" >
+        OFFERGROUPNO,
+      </if>
+      <if test="promotype != null" >
+        PROMOTYPE,
+      </if>
+      <if test="condid != null" >
+        CONDID,
+      </if>
+      <if test="productid != null" >
+        PRODUCTID,
+      </if>
+      <if test="paymentprice != null" >
+        PAYMENTPRICE,
+      </if>
+      <if test="purchaseprice != null" >
+        PURCHASEPRICE,
+      </if>
+      <if test="simcardsuitid != null" >
+        SIMCARDSUITID,
+      </if>
+      <if test="simcardpackageid != null" >
+        SIMCARDPACKAGEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderdetailid != null" >
+        #{orderdetailid,jdbcType=DECIMAL},
+      </if>
+      <if test="orderid != null" >
+        #{orderid,jdbcType=DECIMAL},
+      </if>
+      <if test="itemid != null" >
+        #{itemid,jdbcType=DECIMAL},
+      </if>
+      <if test="itemname != null" >
+        #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemno != null" >
+        #{itemno,jdbcType=VARCHAR},
+      </if>
+      <if test="skuid != null" >
+        #{skuid,jdbcType=DECIMAL},
+      </if>
+      <if test="sku != null" >
+        #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="skuimg != null" >
+        #{skuimg,jdbcType=VARCHAR},
+      </if>
+      <if test="skuname != null" >
+        #{skuname,jdbcType=VARCHAR},
+      </if>
+      <if test="skucattype != null" >
+        #{skucattype,jdbcType=DECIMAL},
+      </if>
+      <if test="skuspec != null" >
+        #{skuspec,jdbcType=VARCHAR},
+      </if>
+      <if test="marketprice != null" >
+        #{marketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="skudiscount != null" >
+        #{skudiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="skuprice != null" >
+        #{skuprice,jdbcType=DECIMAL},
+      </if>
+      <if test="offergroupid != null" >
+        #{offergroupid,jdbcType=DECIMAL},
+      </if>
+      <if test="offergroupname != null" >
+        #{offergroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="offertype != null" >
+        #{offertype,jdbcType=DECIMAL},
+      </if>
+      <if test="shortname != null" >
+        #{shortname,jdbcType=VARCHAR},
+      </if>
+      <if test="offerid != null" >
+        #{offerid,jdbcType=DECIMAL},
+      </if>
+      <if test="offername != null" >
+        #{offername,jdbcType=VARCHAR},
+      </if>
+      <if test="offerno != null" >
+        #{offerno,jdbcType=VARCHAR},
+      </if>
+      <if test="shortname2 != null" >
+        #{shortname2,jdbcType=VARCHAR},
+      </if>
+      <if test="offerterm != null" >
+        #{offerterm,jdbcType=DECIMAL},
+      </if>
+      <if test="commitmonthly != null" >
+        #{commitmonthly,jdbcType=DECIMAL},
+      </if>
+      <if test="prepaid != null" >
+        #{prepaid,jdbcType=DECIMAL},
+      </if>
+      <if test="period != null" >
+        #{period,jdbcType=DECIMAL},
+      </if>
+      <if test="refundmonthly != null" >
+        #{refundmonthly,jdbcType=DECIMAL},
+      </if>
+      <if test="refund1stmonth != null" >
+        #{refund1stmonth,jdbcType=DECIMAL},
+      </if>
+      <if test="refundlastmonth != null" >
+        #{refundlastmonth,jdbcType=DECIMAL},
+      </if>
+      <if test="orderdetailtype != null" >
+        #{orderdetailtype,jdbcType=DECIMAL},
+      </if>
+      <if test="merchantid != null" >
+        #{merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="seriescode != null" >
+        #{seriescode,jdbcType=VARCHAR},
+      </if>
+      <if test="offergroupno != null" >
+        #{offergroupno,jdbcType=VARCHAR},
+      </if>
+      <if test="promotype != null" >
+        #{promotype,jdbcType=DECIMAL},
+      </if>
+      <if test="condid != null" >
+        #{condid,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentprice != null" >
+        #{paymentprice,jdbcType=DECIMAL},
+      </if>
+      <if test="purchaseprice != null" >
+        #{purchaseprice,jdbcType=DECIMAL},
+      </if>
+      <if test="simcardsuitid != null" >
+        #{simcardsuitid,jdbcType=DECIMAL},
+      </if>
+      <if test="simcardpackageid != null" >
+        #{simcardpackageid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ecps.model.EbOrderdetail" >
+    update EB_ORDERDETAIL
+    <set >
+      <if test="orderid != null" >
+        ORDERID = #{orderid,jdbcType=DECIMAL},
+      </if>
+      <if test="itemid != null" >
+        ITEMID = #{itemid,jdbcType=DECIMAL},
+      </if>
+      <if test="itemname != null" >
+        ITEMNAME = #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemno != null" >
+        ITEMNO = #{itemno,jdbcType=VARCHAR},
+      </if>
+      <if test="skuid != null" >
+        SKUID = #{skuid,jdbcType=DECIMAL},
+      </if>
+      <if test="sku != null" >
+        SKU = #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="skuimg != null" >
+        SKUIMG = #{skuimg,jdbcType=VARCHAR},
+      </if>
+      <if test="skuname != null" >
+        SKUNAME = #{skuname,jdbcType=VARCHAR},
+      </if>
+      <if test="skucattype != null" >
+        SKUCATTYPE = #{skucattype,jdbcType=DECIMAL},
+      </if>
+      <if test="skuspec != null" >
+        SKUSPEC = #{skuspec,jdbcType=VARCHAR},
+      </if>
+      <if test="marketprice != null" >
+        MARKETPRICE = #{marketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="skudiscount != null" >
+        SKUDISCOUNT = #{skudiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="skuprice != null" >
+        SKUPRICE = #{skuprice,jdbcType=DECIMAL},
+      </if>
+      <if test="offergroupid != null" >
+        OFFERGROUPID = #{offergroupid,jdbcType=DECIMAL},
+      </if>
+      <if test="offergroupname != null" >
+        OFFERGROUPNAME = #{offergroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="offertype != null" >
+        OFFERTYPE = #{offertype,jdbcType=DECIMAL},
+      </if>
+      <if test="shortname != null" >
+        SHORTNAME = #{shortname,jdbcType=VARCHAR},
+      </if>
+      <if test="offerid != null" >
+        OFFERID = #{offerid,jdbcType=DECIMAL},
+      </if>
+      <if test="offername != null" >
+        OFFERNAME = #{offername,jdbcType=VARCHAR},
+      </if>
+      <if test="offerno != null" >
+        OFFERNO = #{offerno,jdbcType=VARCHAR},
+      </if>
+      <if test="shortname2 != null" >
+        SHORTNAME2 = #{shortname2,jdbcType=VARCHAR},
+      </if>
+      <if test="offerterm != null" >
+        OFFERTERM = #{offerterm,jdbcType=DECIMAL},
+      </if>
+      <if test="commitmonthly != null" >
+        COMMITMONTHLY = #{commitmonthly,jdbcType=DECIMAL},
+      </if>
+      <if test="prepaid != null" >
+        PREPAID = #{prepaid,jdbcType=DECIMAL},
+      </if>
+      <if test="period != null" >
+        PERIOD = #{period,jdbcType=DECIMAL},
+      </if>
+      <if test="refundmonthly != null" >
+        REFUNDMONTHLY = #{refundmonthly,jdbcType=DECIMAL},
+      </if>
+      <if test="refund1stmonth != null" >
+        REFUND1STMONTH = #{refund1stmonth,jdbcType=DECIMAL},
+      </if>
+      <if test="refundlastmonth != null" >
+        REFUNDLASTMONTH = #{refundlastmonth,jdbcType=DECIMAL},
+      </if>
+      <if test="orderdetailtype != null" >
+        ORDERDETAILTYPE = #{orderdetailtype,jdbcType=DECIMAL},
+      </if>
+      <if test="merchantid != null" >
+        MERCHANTID = #{merchantid,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null" >
+        QUANTITY = #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="seriescode != null" >
+        SERIESCODE = #{seriescode,jdbcType=VARCHAR},
+      </if>
+      <if test="offergroupno != null" >
+        OFFERGROUPNO = #{offergroupno,jdbcType=VARCHAR},
+      </if>
+      <if test="promotype != null" >
+        PROMOTYPE = #{promotype,jdbcType=DECIMAL},
+      </if>
+      <if test="condid != null" >
+        CONDID = #{condid,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        PRODUCTID = #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentprice != null" >
+        PAYMENTPRICE = #{paymentprice,jdbcType=DECIMAL},
+      </if>
+      <if test="purchaseprice != null" >
+        PURCHASEPRICE = #{purchaseprice,jdbcType=DECIMAL},
+      </if>
+      <if test="simcardsuitid != null" >
+        SIMCARDSUITID = #{simcardsuitid,jdbcType=DECIMAL},
+      </if>
+      <if test="simcardpackageid != null" >
+        SIMCARDPACKAGEID = #{simcardpackageid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORDERDETAILID = #{orderdetailid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ecps.model.EbOrderdetail" >
+    update EB_ORDERDETAIL
+    set ORDERID = #{orderid,jdbcType=DECIMAL},
+      ITEMID = #{itemid,jdbcType=DECIMAL},
+      ITEMNAME = #{itemname,jdbcType=VARCHAR},
+      ITEMNO = #{itemno,jdbcType=VARCHAR},
+      SKUID = #{skuid,jdbcType=DECIMAL},
+      SKU = #{sku,jdbcType=VARCHAR},
+      SKUIMG = #{skuimg,jdbcType=VARCHAR},
+      SKUNAME = #{skuname,jdbcType=VARCHAR},
+      SKUCATTYPE = #{skucattype,jdbcType=DECIMAL},
+      SKUSPEC = #{skuspec,jdbcType=VARCHAR},
+      MARKETPRICE = #{marketprice,jdbcType=DECIMAL},
+      SKUDISCOUNT = #{skudiscount,jdbcType=DECIMAL},
+      SKUPRICE = #{skuprice,jdbcType=DECIMAL},
+      OFFERGROUPID = #{offergroupid,jdbcType=DECIMAL},
+      OFFERGROUPNAME = #{offergroupname,jdbcType=VARCHAR},
+      OFFERTYPE = #{offertype,jdbcType=DECIMAL},
+      SHORTNAME = #{shortname,jdbcType=VARCHAR},
+      OFFERID = #{offerid,jdbcType=DECIMAL},
+      OFFERNAME = #{offername,jdbcType=VARCHAR},
+      OFFERNO = #{offerno,jdbcType=VARCHAR},
+      SHORTNAME2 = #{shortname2,jdbcType=VARCHAR},
+      OFFERTERM = #{offerterm,jdbcType=DECIMAL},
+      COMMITMONTHLY = #{commitmonthly,jdbcType=DECIMAL},
+      PREPAID = #{prepaid,jdbcType=DECIMAL},
+      PERIOD = #{period,jdbcType=DECIMAL},
+      REFUNDMONTHLY = #{refundmonthly,jdbcType=DECIMAL},
+      REFUND1STMONTH = #{refund1stmonth,jdbcType=DECIMAL},
+      REFUNDLASTMONTH = #{refundlastmonth,jdbcType=DECIMAL},
+      ORDERDETAILTYPE = #{orderdetailtype,jdbcType=DECIMAL},
+      MERCHANTID = #{merchantid,jdbcType=DECIMAL},
+      QUANTITY = #{quantity,jdbcType=DECIMAL},
+      PRICE = #{price,jdbcType=DECIMAL},
+      SERIESCODE = #{seriescode,jdbcType=VARCHAR},
+      OFFERGROUPNO = #{offergroupno,jdbcType=VARCHAR},
+      PROMOTYPE = #{promotype,jdbcType=DECIMAL},
+      CONDID = #{condid,jdbcType=VARCHAR},
+      PRODUCTID = #{productid,jdbcType=VARCHAR},
+      PAYMENTPRICE = #{paymentprice,jdbcType=DECIMAL},
+      PURCHASEPRICE = #{purchaseprice,jdbcType=DECIMAL},
+      SIMCARDSUITID = #{simcardsuitid,jdbcType=DECIMAL},
+      SIMCARDPACKAGEID = #{simcardpackageid,jdbcType=VARCHAR}
+    where ORDERDETAILID = #{orderdetailid,jdbcType=DECIMAL}
+  </update>
+</mapper>

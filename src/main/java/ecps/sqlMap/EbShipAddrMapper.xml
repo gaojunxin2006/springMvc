@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ecps.sqlMap.EbShipAddrMapper" >
+  <resultMap id="BaseResultMap" type="ecps.model.EbShipAddr" >
+    <id column="EB_SHIP_ADDR_ID" property="ebShipAddrId" jdbcType="DECIMAL" />
+    <result column="PTL_USER_ID" property="ptlUserId" jdbcType="DECIMAL" />
+    <result column="SHIP_NAME" property="shipName" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="DISTRICT" property="district" jdbcType="VARCHAR" />
+    <result column="ZIP_CODE" property="zipCode" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="DEFAULT_ADDR" property="defaultAddr" jdbcType="DECIMAL" />
+    <result column="BEIZHU" property="beizhu" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    EB_SHIP_ADDR_ID, PTL_USER_ID, SHIP_NAME, PROVINCE, CITY, DISTRICT, ZIP_CODE, ADDR, 
+    PHONE, DEFAULT_ADDR, BEIZHU
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from EB_SHIP_ADDR
+    where EB_SHIP_ADDR_ID = #{ebShipAddrId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from EB_SHIP_ADDR
+    where EB_SHIP_ADDR_ID = #{ebShipAddrId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="ecps.model.EbShipAddr" >
+    insert into EB_SHIP_ADDR (EB_SHIP_ADDR_ID, PTL_USER_ID, SHIP_NAME, 
+      PROVINCE, CITY, DISTRICT, 
+      ZIP_CODE, ADDR, PHONE, 
+      DEFAULT_ADDR, BEIZHU)
+    values (#{ebShipAddrId,jdbcType=DECIMAL}, #{ptlUserId,jdbcType=DECIMAL}, #{shipName,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, 
+      #{zipCode,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{defaultAddr,jdbcType=DECIMAL}, #{beizhu,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="ecps.model.EbShipAddr" >
+    insert into EB_SHIP_ADDR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ebShipAddrId != null" >
+        EB_SHIP_ADDR_ID,
+      </if>
+      <if test="ptlUserId != null" >
+        PTL_USER_ID,
+      </if>
+      <if test="shipName != null" >
+        SHIP_NAME,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="district != null" >
+        DISTRICT,
+      </if>
+      <if test="zipCode != null" >
+        ZIP_CODE,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="defaultAddr != null" >
+        DEFAULT_ADDR,
+      </if>
+      <if test="beizhu != null" >
+        BEIZHU,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ebShipAddrId != null" >
+        #{ebShipAddrId,jdbcType=DECIMAL},
+      </if>
+      <if test="ptlUserId != null" >
+        #{ptlUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="shipName != null" >
+        #{shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null" >
+        #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultAddr != null" >
+        #{defaultAddr,jdbcType=DECIMAL},
+      </if>
+      <if test="beizhu != null" >
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ecps.model.EbShipAddr" >
+    update EB_SHIP_ADDR
+    <set >
+      <if test="ptlUserId != null" >
+        PTL_USER_ID = #{ptlUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="shipName != null" >
+        SHIP_NAME = #{shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        DISTRICT = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null" >
+        ZIP_CODE = #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultAddr != null" >
+        DEFAULT_ADDR = #{defaultAddr,jdbcType=DECIMAL},
+      </if>
+      <if test="beizhu != null" >
+        BEIZHU = #{beizhu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EB_SHIP_ADDR_ID = #{ebShipAddrId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ecps.model.EbShipAddr" >
+    update EB_SHIP_ADDR
+    set PTL_USER_ID = #{ptlUserId,jdbcType=DECIMAL},
+      SHIP_NAME = #{shipName,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      DISTRICT = #{district,jdbcType=VARCHAR},
+      ZIP_CODE = #{zipCode,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      DEFAULT_ADDR = #{defaultAddr,jdbcType=DECIMAL},
+      BEIZHU = #{beizhu,jdbcType=VARCHAR}
+    where EB_SHIP_ADDR_ID = #{ebShipAddrId,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ecps.sqlMap.EbOrderMapper" >
+  <resultMap id="BaseResultMap" type="ecps.model.EbOrder" >
+    <id column="ORDERID" property="orderid" jdbcType="DECIMAL" />
+    <result column="PTLUSERID" property="ptluserid" jdbcType="DECIMAL" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="ORDERNUM" property="ordernum" jdbcType="VARCHAR" />
+    <result column="PAYMENT" property="payment" jdbcType="DECIMAL" />
+    <result column="PAYPLATFORM" property="payplatform" jdbcType="DECIMAL" />
+    <result column="DELIVERY" property="delivery" jdbcType="DECIMAL" />
+    <result column="ISCONFIRM" property="isconfirm" jdbcType="DECIMAL" />
+    <result column="ORDERSUM" property="ordersum" jdbcType="DECIMAL" />
+    <result column="SHIPFEE" property="shipfee" jdbcType="DECIMAL" />
+    <result column="ISPAID" property="ispaid" jdbcType="DECIMAL" />
+    <result column="ORDERSTATE" property="orderstate" jdbcType="DECIMAL" />
+    <result column="PAYMENTCASH" property="paymentcash" jdbcType="DECIMAL" />
+    <result column="DISTRIID" property="distriid" jdbcType="DECIMAL" />
+    <result column="DELIVERYMETHOD" property="deliverymethod" jdbcType="DECIMAL" />
+    <result column="PAYMENTNO" property="paymentno" jdbcType="VARCHAR" />
+    <result column="ORDERTIME" property="ordertime" jdbcType="DATE" />
+    <result column="PAYTIME" property="paytime" jdbcType="DATE" />
+    <result column="DEPOSITTIME" property="deposittime" jdbcType="DATE" />
+    <result column="SUCCESSTIME" property="successtime" jdbcType="DATE" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="DATE" />
+    <result column="SRVTYPE" property="srvtype" jdbcType="DECIMAL" />
+    <result column="SELFCOLLECTSITE" property="selfcollectsite" jdbcType="VARCHAR" />
+    <result column="SELFCOLLECTSITEID" property="selfcollectsiteid" jdbcType="DECIMAL" />
+    <result column="ISDELETED" property="isdeleted" jdbcType="DECIMAL" />
+    <result column="ISDISPLAY" property="isdisplay" jdbcType="DECIMAL" />
+    <result column="NOTES" property="notes" jdbcType="VARCHAR" />
+    <result column="SHIPNAME" property="shipname" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="DISTRICT" property="district" jdbcType="VARCHAR" />
+    <result column="ZIPCODE" property="zipcode" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="PAYABLE" property="payable" jdbcType="DECIMAL" />
+    <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+    <result column="CONTENTS" property="contents" jdbcType="VARCHAR" />
+    <result column="ISCALL" property="iscall" jdbcType="VARCHAR" />
+    <result column="DELIVERYNO" property="deliveryno" jdbcType="VARCHAR" />
+    <result column="AREACODE" property="areacode" jdbcType="VARCHAR" />
+    <result column="AREANAME" property="areaname" jdbcType="VARCHAR" />
+    <result column="ISPRINT" property="isprint" jdbcType="DECIMAL" />
+    <result column="CRMCALLSTIME" property="crmcallstime" jdbcType="DATE" />
+    <result column="ISOFFERRELEASE" property="isofferrelease" jdbcType="DECIMAL" />
+    <result column="JOBNUM" property="jobnum" jdbcType="VARCHAR" />
+    <result column="ORDERTYPE" property="ordertype" jdbcType="DECIMAL" />
+    <result column="FIXEDPHONE" property="fixedphone" jdbcType="VARCHAR" />
+    <result column="ATTACHFILE" property="attachfile" jdbcType="VARCHAR" />
+    <result column="RETURNTYPE" property="returntype" jdbcType="DECIMAL" />
+    <result column="SECKILLID" property="seckillid" jdbcType="VARCHAR" />
+    <result column="ORDERSOURCE" property="ordersource" jdbcType="DECIMAL" />
+    <result column="ORDEREXT1" property="orderext1" jdbcType="VARCHAR" />
+    <result column="ORDEREXT2" property="orderext2" jdbcType="VARCHAR" />
+    <result column="ORDEREXT3" property="orderext3" jdbcType="VARCHAR" />
+    <result column="ORDEREXT4" property="orderext4" jdbcType="VARCHAR" />
+    <result column="ORDEREXT5" property="orderext5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ORDERID, PTLUSERID, USERNAME, ORDERNUM, PAYMENT, PAYPLATFORM, DELIVERY, ISCONFIRM, 
+    ORDERSUM, SHIPFEE, ISPAID, ORDERSTATE, PAYMENTCASH, DISTRIID, DELIVERYMETHOD, PAYMENTNO, 
+    ORDERTIME, PAYTIME, DEPOSITTIME, SUCCESSTIME, UPDATETIME, SRVTYPE, SELFCOLLECTSITE, 
+    SELFCOLLECTSITEID, ISDELETED, ISDISPLAY, NOTES, SHIPNAME, PROVINCE, CITY, DISTRICT, 
+    ZIPCODE, ADDR, PHONE, PAYABLE, COMPANY, CONTENTS, ISCALL, DELIVERYNO, AREACODE, AREANAME, 
+    ISPRINT, CRMCALLSTIME, ISOFFERRELEASE, JOBNUM, ORDERTYPE, FIXEDPHONE, ATTACHFILE, 
+    RETURNTYPE, SECKILLID, ORDERSOURCE, ORDEREXT1, ORDEREXT2, ORDEREXT3, ORDEREXT4, ORDEREXT5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from EB_ORDER
+    where ORDERID = #{orderid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from EB_ORDER
+    where ORDERID = #{orderid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="ecps.model.EbOrder" >
+    insert into EB_ORDER (ORDERID, PTLUSERID, USERNAME, 
+      ORDERNUM, PAYMENT, PAYPLATFORM, 
+      DELIVERY, ISCONFIRM, ORDERSUM, 
+      SHIPFEE, ISPAID, ORDERSTATE, 
+      PAYMENTCASH, DISTRIID, DELIVERYMETHOD, 
+      PAYMENTNO, ORDERTIME, PAYTIME, 
+      DEPOSITTIME, SUCCESSTIME, UPDATETIME, 
+      SRVTYPE, SELFCOLLECTSITE, SELFCOLLECTSITEID, 
+      ISDELETED, ISDISPLAY, NOTES, 
+      SHIPNAME, PROVINCE, CITY, 
+      DISTRICT, ZIPCODE, ADDR, 
+      PHONE, PAYABLE, COMPANY, 
+      CONTENTS, ISCALL, DELIVERYNO, 
+      AREACODE, AREANAME, ISPRINT, 
+      CRMCALLSTIME, ISOFFERRELEASE, JOBNUM, 
+      ORDERTYPE, FIXEDPHONE, ATTACHFILE, 
+      RETURNTYPE, SECKILLID, ORDERSOURCE, 
+      ORDEREXT1, ORDEREXT2, ORDEREXT3, 
+      ORDEREXT4, ORDEREXT5)
+    values (#{orderid,jdbcType=DECIMAL}, #{ptluserid,jdbcType=DECIMAL}, #{username,jdbcType=VARCHAR}, 
+      #{ordernum,jdbcType=VARCHAR}, #{payment,jdbcType=DECIMAL}, #{payplatform,jdbcType=DECIMAL}, 
+      #{delivery,jdbcType=DECIMAL}, #{isconfirm,jdbcType=DECIMAL}, #{ordersum,jdbcType=DECIMAL}, 
+      #{shipfee,jdbcType=DECIMAL}, #{ispaid,jdbcType=DECIMAL}, #{orderstate,jdbcType=DECIMAL}, 
+      #{paymentcash,jdbcType=DECIMAL}, #{distriid,jdbcType=DECIMAL}, #{deliverymethod,jdbcType=DECIMAL}, 
+      #{paymentno,jdbcType=VARCHAR}, #{ordertime,jdbcType=DATE}, #{paytime,jdbcType=DATE}, 
+      #{deposittime,jdbcType=DATE}, #{successtime,jdbcType=DATE}, #{updatetime,jdbcType=DATE}, 
+      #{srvtype,jdbcType=DECIMAL}, #{selfcollectsite,jdbcType=VARCHAR}, #{selfcollectsiteid,jdbcType=DECIMAL}, 
+      #{isdeleted,jdbcType=DECIMAL}, #{isdisplay,jdbcType=DECIMAL}, #{notes,jdbcType=VARCHAR}, 
+      #{shipname,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{district,jdbcType=VARCHAR}, #{zipcode,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{payable,jdbcType=DECIMAL}, #{company,jdbcType=VARCHAR}, 
+      #{contents,jdbcType=VARCHAR}, #{iscall,jdbcType=VARCHAR}, #{deliveryno,jdbcType=VARCHAR}, 
+      #{areacode,jdbcType=VARCHAR}, #{areaname,jdbcType=VARCHAR}, #{isprint,jdbcType=DECIMAL}, 
+      #{crmcallstime,jdbcType=DATE}, #{isofferrelease,jdbcType=DECIMAL}, #{jobnum,jdbcType=VARCHAR}, 
+      #{ordertype,jdbcType=DECIMAL}, #{fixedphone,jdbcType=VARCHAR}, #{attachfile,jdbcType=VARCHAR}, 
+      #{returntype,jdbcType=DECIMAL}, #{seckillid,jdbcType=VARCHAR}, #{ordersource,jdbcType=DECIMAL}, 
+      #{orderext1,jdbcType=VARCHAR}, #{orderext2,jdbcType=VARCHAR}, #{orderext3,jdbcType=VARCHAR}, 
+      #{orderext4,jdbcType=VARCHAR}, #{orderext5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="ecps.model.EbOrder" >
+    insert into EB_ORDER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        ORDERID,
+      </if>
+      <if test="ptluserid != null" >
+        PTLUSERID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="ordernum != null" >
+        ORDERNUM,
+      </if>
+      <if test="payment != null" >
+        PAYMENT,
+      </if>
+      <if test="payplatform != null" >
+        PAYPLATFORM,
+      </if>
+      <if test="delivery != null" >
+        DELIVERY,
+      </if>
+      <if test="isconfirm != null" >
+        ISCONFIRM,
+      </if>
+      <if test="ordersum != null" >
+        ORDERSUM,
+      </if>
+      <if test="shipfee != null" >
+        SHIPFEE,
+      </if>
+      <if test="ispaid != null" >
+        ISPAID,
+      </if>
+      <if test="orderstate != null" >
+        ORDERSTATE,
+      </if>
+      <if test="paymentcash != null" >
+        PAYMENTCASH,
+      </if>
+      <if test="distriid != null" >
+        DISTRIID,
+      </if>
+      <if test="deliverymethod != null" >
+        DELIVERYMETHOD,
+      </if>
+      <if test="paymentno != null" >
+        PAYMENTNO,
+      </if>
+      <if test="ordertime != null" >
+        ORDERTIME,
+      </if>
+      <if test="paytime != null" >
+        PAYTIME,
+      </if>
+      <if test="deposittime != null" >
+        DEPOSITTIME,
+      </if>
+      <if test="successtime != null" >
+        SUCCESSTIME,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+      <if test="srvtype != null" >
+        SRVTYPE,
+      </if>
+      <if test="selfcollectsite != null" >
+        SELFCOLLECTSITE,
+      </if>
+      <if test="selfcollectsiteid != null" >
+        SELFCOLLECTSITEID,
+      </if>
+      <if test="isdeleted != null" >
+        ISDELETED,
+      </if>
+      <if test="isdisplay != null" >
+        ISDISPLAY,
+      </if>
+      <if test="notes != null" >
+        NOTES,
+      </if>
+      <if test="shipname != null" >
+        SHIPNAME,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="district != null" >
+        DISTRICT,
+      </if>
+      <if test="zipcode != null" >
+        ZIPCODE,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="payable != null" >
+        PAYABLE,
+      </if>
+      <if test="company != null" >
+        COMPANY,
+      </if>
+      <if test="contents != null" >
+        CONTENTS,
+      </if>
+      <if test="iscall != null" >
+        ISCALL,
+      </if>
+      <if test="deliveryno != null" >
+        DELIVERYNO,
+      </if>
+      <if test="areacode != null" >
+        AREACODE,
+      </if>
+      <if test="areaname != null" >
+        AREANAME,
+      </if>
+      <if test="isprint != null" >
+        ISPRINT,
+      </if>
+      <if test="crmcallstime != null" >
+        CRMCALLSTIME,
+      </if>
+      <if test="isofferrelease != null" >
+        ISOFFERRELEASE,
+      </if>
+      <if test="jobnum != null" >
+        JOBNUM,
+      </if>
+      <if test="ordertype != null" >
+        ORDERTYPE,
+      </if>
+      <if test="fixedphone != null" >
+        FIXEDPHONE,
+      </if>
+      <if test="attachfile != null" >
+        ATTACHFILE,
+      </if>
+      <if test="returntype != null" >
+        RETURNTYPE,
+      </if>
+      <if test="seckillid != null" >
+        SECKILLID,
+      </if>
+      <if test="ordersource != null" >
+        ORDERSOURCE,
+      </if>
+      <if test="orderext1 != null" >
+        ORDEREXT1,
+      </if>
+      <if test="orderext2 != null" >
+        ORDEREXT2,
+      </if>
+      <if test="orderext3 != null" >
+        ORDEREXT3,
+      </if>
+      <if test="orderext4 != null" >
+        ORDEREXT4,
+      </if>
+      <if test="orderext5 != null" >
+        ORDEREXT5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        #{orderid,jdbcType=DECIMAL},
+      </if>
+      <if test="ptluserid != null" >
+        #{ptluserid,jdbcType=DECIMAL},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null" >
+        #{payment,jdbcType=DECIMAL},
+      </if>
+      <if test="payplatform != null" >
+        #{payplatform,jdbcType=DECIMAL},
+      </if>
+      <if test="delivery != null" >
+        #{delivery,jdbcType=DECIMAL},
+      </if>
+      <if test="isconfirm != null" >
+        #{isconfirm,jdbcType=DECIMAL},
+      </if>
+      <if test="ordersum != null" >
+        #{ordersum,jdbcType=DECIMAL},
+      </if>
+      <if test="shipfee != null" >
+        #{shipfee,jdbcType=DECIMAL},
+      </if>
+      <if test="ispaid != null" >
+        #{ispaid,jdbcType=DECIMAL},
+      </if>
+      <if test="orderstate != null" >
+        #{orderstate,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentcash != null" >
+        #{paymentcash,jdbcType=DECIMAL},
+      </if>
+      <if test="distriid != null" >
+        #{distriid,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverymethod != null" >
+        #{deliverymethod,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentno != null" >
+        #{paymentno,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertime != null" >
+        #{ordertime,jdbcType=DATE},
+      </if>
+      <if test="paytime != null" >
+        #{paytime,jdbcType=DATE},
+      </if>
+      <if test="deposittime != null" >
+        #{deposittime,jdbcType=DATE},
+      </if>
+      <if test="successtime != null" >
+        #{successtime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="srvtype != null" >
+        #{srvtype,jdbcType=DECIMAL},
+      </if>
+      <if test="selfcollectsite != null" >
+        #{selfcollectsite,jdbcType=VARCHAR},
+      </if>
+      <if test="selfcollectsiteid != null" >
+        #{selfcollectsiteid,jdbcType=DECIMAL},
+      </if>
+      <if test="isdeleted != null" >
+        #{isdeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="isdisplay != null" >
+        #{isdisplay,jdbcType=DECIMAL},
+      </if>
+      <if test="notes != null" >
+        #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="shipname != null" >
+        #{shipname,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="payable != null" >
+        #{payable,jdbcType=DECIMAL},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="contents != null" >
+        #{contents,jdbcType=VARCHAR},
+      </if>
+      <if test="iscall != null" >
+        #{iscall,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryno != null" >
+        #{deliveryno,jdbcType=VARCHAR},
+      </if>
+      <if test="areacode != null" >
+        #{areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaname != null" >
+        #{areaname,jdbcType=VARCHAR},
+      </if>
+      <if test="isprint != null" >
+        #{isprint,jdbcType=DECIMAL},
+      </if>
+      <if test="crmcallstime != null" >
+        #{crmcallstime,jdbcType=DATE},
+      </if>
+      <if test="isofferrelease != null" >
+        #{isofferrelease,jdbcType=DECIMAL},
+      </if>
+      <if test="jobnum != null" >
+        #{jobnum,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertype != null" >
+        #{ordertype,jdbcType=DECIMAL},
+      </if>
+      <if test="fixedphone != null" >
+        #{fixedphone,jdbcType=VARCHAR},
+      </if>
+      <if test="attachfile != null" >
+        #{attachfile,jdbcType=VARCHAR},
+      </if>
+      <if test="returntype != null" >
+        #{returntype,jdbcType=DECIMAL},
+      </if>
+      <if test="seckillid != null" >
+        #{seckillid,jdbcType=VARCHAR},
+      </if>
+      <if test="ordersource != null" >
+        #{ordersource,jdbcType=DECIMAL},
+      </if>
+      <if test="orderext1 != null" >
+        #{orderext1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderext2 != null" >
+        #{orderext2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderext3 != null" >
+        #{orderext3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderext4 != null" >
+        #{orderext4,jdbcType=VARCHAR},
+      </if>
+      <if test="orderext5 != null" >
+        #{orderext5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ecps.model.EbOrder" >
+    update EB_ORDER
+    <set >
+      <if test="ptluserid != null" >
+        PTLUSERID = #{ptluserid,jdbcType=DECIMAL},
+      </if>
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null" >
+        ORDERNUM = #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null" >
+        PAYMENT = #{payment,jdbcType=DECIMAL},
+      </if>
+      <if test="payplatform != null" >
+        PAYPLATFORM = #{payplatform,jdbcType=DECIMAL},
+      </if>
+      <if test="delivery != null" >
+        DELIVERY = #{delivery,jdbcType=DECIMAL},
+      </if>
+      <if test="isconfirm != null" >
+        ISCONFIRM = #{isconfirm,jdbcType=DECIMAL},
+      </if>
+      <if test="ordersum != null" >
+        ORDERSUM = #{ordersum,jdbcType=DECIMAL},
+      </if>
+      <if test="shipfee != null" >
+        SHIPFEE = #{shipfee,jdbcType=DECIMAL},
+      </if>
+      <if test="ispaid != null" >
+        ISPAID = #{ispaid,jdbcType=DECIMAL},
+      </if>
+      <if test="orderstate != null" >
+        ORDERSTATE = #{orderstate,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentcash != null" >
+        PAYMENTCASH = #{paymentcash,jdbcType=DECIMAL},
+      </if>
+      <if test="distriid != null" >
+        DISTRIID = #{distriid,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverymethod != null" >
+        DELIVERYMETHOD = #{deliverymethod,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentno != null" >
+        PAYMENTNO = #{paymentno,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertime != null" >
+        ORDERTIME = #{ordertime,jdbcType=DATE},
+      </if>
+      <if test="paytime != null" >
+        PAYTIME = #{paytime,jdbcType=DATE},
+      </if>
+      <if test="deposittime != null" >
+        DEPOSITTIME = #{deposittime,jdbcType=DATE},
+      </if>
+      <if test="successtime != null" >
+        SUCCESSTIME = #{successtime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="srvtype != null" >
+        SRVTYPE = #{srvtype,jdbcType=DECIMAL},
+      </if>
+      <if test="selfcollectsite != null" >
+        SELFCOLLECTSITE = #{selfcollectsite,jdbcType=VARCHAR},
+      </if>
+      <if test="selfcollectsiteid != null" >
+        SELFCOLLECTSITEID = #{selfcollectsiteid,jdbcType=DECIMAL},
+      </if>
+      <if test="isdeleted != null" >
+        ISDELETED = #{isdeleted,jdbcType=DECIMAL},
+      </if>
+      <if test="isdisplay != null" >
+        ISDISPLAY = #{isdisplay,jdbcType=DECIMAL},
+      </if>
+      <if test="notes != null" >
+        NOTES = #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="shipname != null" >
+        SHIPNAME = #{shipname,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        DISTRICT = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        ZIPCODE = #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="payable != null" >
+        PAYABLE = #{payable,jdbcType=DECIMAL},
+      </if>
+      <if test="company != null" >
+        COMPANY = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="contents != null" >
+        CONTENTS = #{contents,jdbcType=VARCHAR},
+      </if>
+      <if test="iscall != null" >
+        ISCALL = #{iscall,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryno != null" >
+        DELIVERYNO = #{deliveryno,jdbcType=VARCHAR},
+      </if>
+      <if test="areacode != null" >
+        AREACODE = #{areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaname != null" >
+        AREANAME = #{areaname,jdbcType=VARCHAR},
+      </if>
+      <if test="isprint != null" >
+        ISPRINT = #{isprint,jdbcType=DECIMAL},
+      </if>
+      <if test="crmcallstime != null" >
+        CRMCALLSTIME = #{crmcallstime,jdbcType=DATE},
+      </if>
+      <if test="isofferrelease != null" >
+        ISOFFERRELEASE = #{isofferrelease,jdbcType=DECIMAL},
+      </if>
+      <if test="jobnum != null" >
+        JOBNUM = #{jobnum,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertype != null" >
+        ORDERTYPE = #{ordertype,jdbcType=DECIMAL},
+      </if>
+      <if test="fixedphone != null" >
+        FIXEDPHONE = #{fixedphone,jdbcType=VARCHAR},
+      </if>
+      <if test="attachfile != null" >
+        ATTACHFILE = #{attachfile,jdbcType=VARCHAR},
+      </if>
+      <if test="returntype != null" >
+        RETURNTYPE = #{returntype,jdbcType=DECIMAL},
+      </if>
+      <if test="seckillid != null" >
+        SECKILLID = #{seckillid,jdbcType=VARCHAR},
+      </if>
+      <if test="ordersource != null" >
+        ORDERSOURCE = #{ordersource,jdbcType=DECIMAL},
+      </if>
+      <if test="orderext1 != null" >
+        ORDEREXT1 = #{orderext1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderext2 != null" >
+        ORDEREXT2 = #{orderext2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderext3 != null" >
+        ORDEREXT3 = #{orderext3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderext4 != null" >
+        ORDEREXT4 = #{orderext4,jdbcType=VARCHAR},
+      </if>
+      <if test="orderext5 != null" >
+        ORDEREXT5 = #{orderext5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORDERID = #{orderid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ecps.model.EbOrder" >
+    update EB_ORDER
+    set PTLUSERID = #{ptluserid,jdbcType=DECIMAL},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      ORDERNUM = #{ordernum,jdbcType=VARCHAR},
+      PAYMENT = #{payment,jdbcType=DECIMAL},
+      PAYPLATFORM = #{payplatform,jdbcType=DECIMAL},
+      DELIVERY = #{delivery,jdbcType=DECIMAL},
+      ISCONFIRM = #{isconfirm,jdbcType=DECIMAL},
+      ORDERSUM = #{ordersum,jdbcType=DECIMAL},
+      SHIPFEE = #{shipfee,jdbcType=DECIMAL},
+      ISPAID = #{ispaid,jdbcType=DECIMAL},
+      ORDERSTATE = #{orderstate,jdbcType=DECIMAL},
+      PAYMENTCASH = #{paymentcash,jdbcType=DECIMAL},
+      DISTRIID = #{distriid,jdbcType=DECIMAL},
+      DELIVERYMETHOD = #{deliverymethod,jdbcType=DECIMAL},
+      PAYMENTNO = #{paymentno,jdbcType=VARCHAR},
+      ORDERTIME = #{ordertime,jdbcType=DATE},
+      PAYTIME = #{paytime,jdbcType=DATE},
+      DEPOSITTIME = #{deposittime,jdbcType=DATE},
+      SUCCESSTIME = #{successtime,jdbcType=DATE},
+      UPDATETIME = #{updatetime,jdbcType=DATE},
+      SRVTYPE = #{srvtype,jdbcType=DECIMAL},
+      SELFCOLLECTSITE = #{selfcollectsite,jdbcType=VARCHAR},
+      SELFCOLLECTSITEID = #{selfcollectsiteid,jdbcType=DECIMAL},
+      ISDELETED = #{isdeleted,jdbcType=DECIMAL},
+      ISDISPLAY = #{isdisplay,jdbcType=DECIMAL},
+      NOTES = #{notes,jdbcType=VARCHAR},
+      SHIPNAME = #{shipname,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      DISTRICT = #{district,jdbcType=VARCHAR},
+      ZIPCODE = #{zipcode,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      PAYABLE = #{payable,jdbcType=DECIMAL},
+      COMPANY = #{company,jdbcType=VARCHAR},
+      CONTENTS = #{contents,jdbcType=VARCHAR},
+      ISCALL = #{iscall,jdbcType=VARCHAR},
+      DELIVERYNO = #{deliveryno,jdbcType=VARCHAR},
+      AREACODE = #{areacode,jdbcType=VARCHAR},
+      AREANAME = #{areaname,jdbcType=VARCHAR},
+      ISPRINT = #{isprint,jdbcType=DECIMAL},
+      CRMCALLSTIME = #{crmcallstime,jdbcType=DATE},
+      ISOFFERRELEASE = #{isofferrelease,jdbcType=DECIMAL},
+      JOBNUM = #{jobnum,jdbcType=VARCHAR},
+      ORDERTYPE = #{ordertype,jdbcType=DECIMAL},
+      FIXEDPHONE = #{fixedphone,jdbcType=VARCHAR},
+      ATTACHFILE = #{attachfile,jdbcType=VARCHAR},
+      RETURNTYPE = #{returntype,jdbcType=DECIMAL},
+      SECKILLID = #{seckillid,jdbcType=VARCHAR},
+      ORDERSOURCE = #{ordersource,jdbcType=DECIMAL},
+      ORDEREXT1 = #{orderext1,jdbcType=VARCHAR},
+      ORDEREXT2 = #{orderext2,jdbcType=VARCHAR},
+      ORDEREXT3 = #{orderext3,jdbcType=VARCHAR},
+      ORDEREXT4 = #{orderext4,jdbcType=VARCHAR},
+      ORDEREXT5 = #{orderext5,jdbcType=VARCHAR}
+    where ORDERID = #{orderid,jdbcType=DECIMAL}
+  </update>
+</mapper>

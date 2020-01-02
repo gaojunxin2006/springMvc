@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ecps.sqlMap.EbItemClobMapper" >
+  <resultMap id="BaseResultMap" type="ecps.model.EbItemClob" >
+    <result column="ITEM_ID" property="itemId" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="ecps.model.EbItemClob" extends="BaseResultMap" >
+    <result column="ITEM_DESC" property="itemDesc" jdbcType="CLOB" />
+    <result column="PACKINGLIST" property="packinglist" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    ITEM_DESC, PACKINGLIST
+  </sql>
+  <insert id="insert" parameterType="ecps.model.EbItemClob" >
+    insert into EB_ITEM_CLOB (ITEM_ID, ITEM_DESC, PACKINGLIST
+      )
+    values (#{itemId,jdbcType=DECIMAL}, #{itemDesc,jdbcType=CLOB}, #{packinglist,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ecps.model.EbItemClob" >
+    insert into EB_ITEM_CLOB
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        ITEM_ID,
+      </if>
+      <if test="itemDesc != null" >
+        ITEM_DESC,
+      </if>
+      <if test="packinglist != null" >
+        PACKINGLIST,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        #{itemId,jdbcType=DECIMAL},
+      </if>
+      <if test="itemDesc != null" >
+        #{itemDesc,jdbcType=CLOB},
+      </if>
+      <if test="packinglist != null" >
+        #{packinglist,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

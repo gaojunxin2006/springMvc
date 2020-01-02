@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ecps.sqlMap.TsPtlUserMapper" >
+  <resultMap id="BaseResultMap" type="ecps.model.TsPtlUser" >
+    <id column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="GENDER" property="gender" jdbcType="DECIMAL" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="NICKNAME" property="nickname" jdbcType="VARCHAR" />
+    <result column="REALNAME" property="realname" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="RESIPROV" property="resiprov" jdbcType="VARCHAR" />
+    <result column="RESICITY" property="resicity" jdbcType="VARCHAR" />
+    <result column="RESIDIST" property="residist" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="ZIPCODE" property="zipcode" jdbcType="DECIMAL" />
+    <result column="LOGINTIME" property="logintime" jdbcType="TIMESTAMP" />
+    <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="GROUPID" property="groupid" jdbcType="DECIMAL" />
+    <result column="BIRTHDAY" property="birthday" jdbcType="VARCHAR" />
+    <result column="QQNUM" property="qqnum" jdbcType="VARCHAR" />
+    <result column="MSNNUM" property="msnnum" jdbcType="VARCHAR" />
+    <result column="CELLPHONE" property="cellphone" jdbcType="VARCHAR" />
+    <result column="INTROINFO" property="introinfo" jdbcType="VARCHAR" />
+    <result column="LOGINCOUNT" property="logincount" jdbcType="DECIMAL" />
+    <result column="REGISTERTIME" property="registertime" jdbcType="TIMESTAMP" />
+    <result column="ISMOBILECLIENT" property="ismobileclient" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_ID, USER_NAME, GENDER, PASSWORD, NICKNAME, REALNAME, PHONE, RESIPROV, RESICITY, 
+    RESIDIST, ADDR, ZIPCODE, LOGINTIME, STATUS, EMAIL, GROUPID, BIRTHDAY, QQNUM, MSNNUM, 
+    CELLPHONE, INTROINFO, LOGINCOUNT, REGISTERTIME, ISMOBILECLIENT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from TS_PTL_USER
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from TS_PTL_USER
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="ecps.model.TsPtlUser" >
+    insert into TS_PTL_USER (USER_ID, USER_NAME, GENDER, 
+      PASSWORD, NICKNAME, REALNAME, 
+      PHONE, RESIPROV, RESICITY, 
+      RESIDIST, ADDR, ZIPCODE, 
+      LOGINTIME, STATUS, EMAIL, 
+      GROUPID, BIRTHDAY, QQNUM, 
+      MSNNUM, CELLPHONE, INTROINFO, 
+      LOGINCOUNT, REGISTERTIME, ISMOBILECLIENT
+      )
+    values (#{userId,jdbcType=DECIMAL}, #{userName,jdbcType=VARCHAR}, #{gender,jdbcType=DECIMAL}, 
+      #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{resiprov,jdbcType=VARCHAR}, #{resicity,jdbcType=VARCHAR}, 
+      #{residist,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{zipcode,jdbcType=DECIMAL}, 
+      #{logintime,jdbcType=TIMESTAMP}, #{status,jdbcType=DECIMAL}, #{email,jdbcType=VARCHAR}, 
+      #{groupid,jdbcType=DECIMAL}, #{birthday,jdbcType=VARCHAR}, #{qqnum,jdbcType=VARCHAR}, 
+      #{msnnum,jdbcType=VARCHAR}, #{cellphone,jdbcType=VARCHAR}, #{introinfo,jdbcType=VARCHAR}, 
+      #{logincount,jdbcType=DECIMAL}, #{registertime,jdbcType=TIMESTAMP}, #{ismobileclient,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ecps.model.TsPtlUser" >
+    insert into TS_PTL_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="gender != null" >
+        GENDER,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="nickname != null" >
+        NICKNAME,
+      </if>
+      <if test="realname != null" >
+        REALNAME,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="resiprov != null" >
+        RESIPROV,
+      </if>
+      <if test="resicity != null" >
+        RESICITY,
+      </if>
+      <if test="residist != null" >
+        RESIDIST,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="zipcode != null" >
+        ZIPCODE,
+      </if>
+      <if test="logintime != null" >
+        LOGINTIME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="groupid != null" >
+        GROUPID,
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY,
+      </if>
+      <if test="qqnum != null" >
+        QQNUM,
+      </if>
+      <if test="msnnum != null" >
+        MSNNUM,
+      </if>
+      <if test="cellphone != null" >
+        CELLPHONE,
+      </if>
+      <if test="introinfo != null" >
+        INTROINFO,
+      </if>
+      <if test="logincount != null" >
+        LOGINCOUNT,
+      </if>
+      <if test="registertime != null" >
+        REGISTERTIME,
+      </if>
+      <if test="ismobileclient != null" >
+        ISMOBILECLIENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=DECIMAL},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="resiprov != null" >
+        #{resiprov,jdbcType=VARCHAR},
+      </if>
+      <if test="resicity != null" >
+        #{resicity,jdbcType=VARCHAR},
+      </if>
+      <if test="residist != null" >
+        #{residist,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        #{zipcode,jdbcType=DECIMAL},
+      </if>
+      <if test="logintime != null" >
+        #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=DECIMAL},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="qqnum != null" >
+        #{qqnum,jdbcType=VARCHAR},
+      </if>
+      <if test="msnnum != null" >
+        #{msnnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null" >
+        #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="introinfo != null" >
+        #{introinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="logincount != null" >
+        #{logincount,jdbcType=DECIMAL},
+      </if>
+      <if test="registertime != null" >
+        #{registertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ismobileclient != null" >
+        #{ismobileclient,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ecps.model.TsPtlUser" >
+    update TS_PTL_USER
+    <set >
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        GENDER = #{gender,jdbcType=DECIMAL},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        NICKNAME = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        REALNAME = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="resiprov != null" >
+        RESIPROV = #{resiprov,jdbcType=VARCHAR},
+      </if>
+      <if test="resicity != null" >
+        RESICITY = #{resicity,jdbcType=VARCHAR},
+      </if>
+      <if test="residist != null" >
+        RESIDIST = #{residist,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        ZIPCODE = #{zipcode,jdbcType=DECIMAL},
+      </if>
+      <if test="logintime != null" >
+        LOGINTIME = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="groupid != null" >
+        GROUPID = #{groupid,jdbcType=DECIMAL},
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="qqnum != null" >
+        QQNUM = #{qqnum,jdbcType=VARCHAR},
+      </if>
+      <if test="msnnum != null" >
+        MSNNUM = #{msnnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null" >
+        CELLPHONE = #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="introinfo != null" >
+        INTROINFO = #{introinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="logincount != null" >
+        LOGINCOUNT = #{logincount,jdbcType=DECIMAL},
+      </if>
+      <if test="registertime != null" >
+        REGISTERTIME = #{registertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ismobileclient != null" >
+        ISMOBILECLIENT = #{ismobileclient,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ecps.model.TsPtlUser" >
+    update TS_PTL_USER
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
+      GENDER = #{gender,jdbcType=DECIMAL},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      NICKNAME = #{nickname,jdbcType=VARCHAR},
+      REALNAME = #{realname,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      RESIPROV = #{resiprov,jdbcType=VARCHAR},
+      RESICITY = #{resicity,jdbcType=VARCHAR},
+      RESIDIST = #{residist,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      ZIPCODE = #{zipcode,jdbcType=DECIMAL},
+      LOGINTIME = #{logintime,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=DECIMAL},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      GROUPID = #{groupid,jdbcType=DECIMAL},
+      BIRTHDAY = #{birthday,jdbcType=VARCHAR},
+      QQNUM = #{qqnum,jdbcType=VARCHAR},
+      MSNNUM = #{msnnum,jdbcType=VARCHAR},
+      CELLPHONE = #{cellphone,jdbcType=VARCHAR},
+      INTROINFO = #{introinfo,jdbcType=VARCHAR},
+      LOGINCOUNT = #{logincount,jdbcType=DECIMAL},
+      REGISTERTIME = #{registertime,jdbcType=TIMESTAMP},
+      ISMOBILECLIENT = #{ismobileclient,jdbcType=VARCHAR}
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+</mapper>

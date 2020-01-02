@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/mvc
+         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+
+<!--  =============================================================================  -->
+
+
+    <!-- 配置Handler -->
+    <bean name="/itemlist.action" id="itemController2019_1" class="cn.gjx.springmvc.first.ItemController2019_1">
+
+    </bean>
+
+    <!-- 另外一个handler，使用的类是原始serlvet方法 -->
+    <bean id="itemController2019_2" class="cn.gjx.springmvc.first.ItemController2019_2">
+
+
+    </bean>
+
+
+    <!-- spring组件扫描 -->
+    <context:component-scan base-package="cn.gjx.springmvc.first"></context:component-scan>
+
+
+
+
+<!--    &lt;!&ndash; 注解handler &ndash;&gt;-->
+<!--    <bean class="cn.gjx.springmvc.first.ItemController2019_3">-->
+
+
+<!--    </bean>-->
+
+
+
+
+
+    <!-- 处理器映射器 -->
+
+                             <!-- 根据请求url -->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+
+
+    </bean>
+
+
+
+    <!-- 简单url映射 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/item1.action">itemController2019_1</prop>
+                <prop key="/item.do">itemController2019_1</prop>
+                <prop key="/item2.do">itemController2019_2</prop>
+
+            </props>
+
+        </property>
+
+
+    </bean>
+
+
+    <!-- 注解处理器映射器 -->
+    <bean
+            class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
+
+
+    <!-- 注解处理器映射器 -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+
+
+    </bean>
+
+
+
+    <!-- 处理器适配器 -->
+
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter">
+
+
+
+    </bean>
+
+    <!-- 另外的原始的servlet适配器 -->
+    <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter">
+
+    </bean>
+
+
+
+
+
+    <!-- 处理器试图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+        <property name="prefix" value="/"></property>
+        <property name="suffix" value=".jsp"></property>
+
+    </bean>
+
+
+
+
+
+
+</beans>
